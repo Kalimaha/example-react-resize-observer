@@ -1,60 +1,33 @@
 import React from "react";
 
-import Info from "./Info";
-import Citations from "./Citations";
-import Nav from "./Nav";
-import Resources from "./Resources";
 import useResponsiveBreakpoints from "./utils/useResponsiveBreakpoints";
 import "./App.css";
+import { Heading } from "./Heading"
 
 function App() {
   const targetRef = React.useRef(null);
   const size = useResponsiveBreakpoints(targetRef, [
-    { small: 200 },
-    { medium: 400 },
-    { large: 600 }
+    { 1: 300 }, { 2: 400 }, { 3: 500 }, { 4: 600 },
+    { 5: 700 }, { 6: 800 }, { 7: 900 }, { 8: 1000 },
+    { 9: 1100 }, { 10: 1200 }, { 11: 1300 }, { 12: 1400 }
   ]);
+  const color = useResponsiveBreakpoints(targetRef, [ { PINKY: 500 }, { RED_RED_WINE: 800 }, { MOFO_GREEN: 1200 } ]);
 
-  return (
-    <React.Fragment>
-      <Nav />
-      <div className="row">
-        <div className="lg-5 col">
-          <div className="paper">
-            <Info />
-          </div>
-          <Resources />
-          <Citations />
-        </div>
-        <div className="lg-7 col">
-          <div className="paper">
-            <div className="row">
-              <div className="col-fill col" style={{ overflow: "hidden" }}>
-                Try horizontally resizing the box below and see the media query
-                name change between small, medium and large
-                <div style={{ overflow: "hidden", width: "100%" }}>
-                  <div
-                    ref={targetRef}
-                    className="border"
-                    style={{
-                      backgroundColor: "aliceblue",
-                      padding: "1rem",
-                      resize: "horizontal",
-                      overflow: "hidden",
-                      maxWidth: "100%",
-                      minWidth: "4rem"
-                    }}
-                  >
-                    {size}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </React.Fragment>
-  );
+  return(
+    <div ref={targetRef}>
+      <Heading color={color} size={size}>• Egg and bacon</Heading>
+      <Heading color={color} size={size}>• Egg, sausage and bacon</Heading>
+      <Heading color={color} size={size}>• Egg and Spam</Heading>
+      <Heading color={color} size={size}>• Egg, bacon and Spam</Heading>
+      <Heading color={color} size={size}>• Egg, bacon, sausage and Spam</Heading>
+      <Heading color={color} size={size}>• Spam, bacon, sausage and Spam</Heading>
+      <Heading color={color} size={size}>• Spam, egg, Spam, Spam, bacon and Spam</Heading>
+      <Heading color={color} size={size}>• Spam, Spam, Spam, egg and Spam</Heading>
+      <Heading color={color} size={size}>• Spam, sausage, Spam, Spam, Spam, bacon, Spam, tomato and Spam</Heading>
+      <Heading color={color} size={size}>• Spam, Spam, Spam, Spam, Spam, Spam, baked beans, Spam, Spam, Spam and Spam</Heading>
+      <Heading color={color} size={size}>• Lobster Thermidor aux crevettes with a Mornay sauce, garnished with truffle pâté, brandy and a fried egg on top, and Spam.</Heading>
+    </div>
+  )
 }
 
 export default App;
